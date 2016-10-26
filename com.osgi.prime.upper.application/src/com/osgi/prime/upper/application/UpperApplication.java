@@ -1,6 +1,9 @@
 package com.osgi.prime.upper.application;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
+import com.osgi.prime.upper.api.Upper;
 
 import osgi.enroute.configurer.api.RequireConfigurerExtender;
 import osgi.enroute.google.angular.capabilities.RequireAngularWebResource;
@@ -14,9 +17,15 @@ import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
 @RequireConfigurerExtender
 @Component(name="com.osgi.prime.upper")
 public class UpperApplication implements REST {
-
+    @Reference
+	Upper upper;
+    
 	public String getUpper(String string) {
-		return string.toUpperCase();
+		return upper.upper(string);
 	}
 
+	public void setUpper(Upper upper) {
+		this.upper = upper;
+	}
+	
 }

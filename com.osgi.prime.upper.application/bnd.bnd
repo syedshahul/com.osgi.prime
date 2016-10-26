@@ -23,7 +23,9 @@ JPM-Command:			upper
 	web=web
 
 -buildpath: \
-	osgi.enroute.base.api
+	osgi.enroute.base.api,\
+	com.osgi.prime.api;version=latest
 	
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
+-runbundles: org.apache.felix.log;version='[1.0.1,1.0.2)'
